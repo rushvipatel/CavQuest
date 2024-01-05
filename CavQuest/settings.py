@@ -14,7 +14,11 @@ from pathlib import Path
 # SHERRIFF: Added import os here for the django_heroku fix at the bottom.
 import os
 import dj_database_url
-from .local_settings import *
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SITE_ID = 4
