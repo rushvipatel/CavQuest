@@ -7,7 +7,8 @@ https://github.com/rushvipatel/CavQuest.git
 2. Open the project in your preferred IDE
 3. Activate the Virtual Environment: 'source env/bin/activate'
 3. Use 'pip install -r requirements.txt' to install necessary packages
-4. Run the server using 'python manage.py runserver'. The server should be running on
+4. Add your own GOOGLE_MAPS_API_KEY and SECRET_KEY using Google Cloud console in settings.py
+5. Run the server using 'python manage.py runserver'. The server should be running on
     http://localhost:8000/. If it is not, check that you have Python and
     Django installed correctly.
 
