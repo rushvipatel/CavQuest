@@ -1,0 +1,121 @@
+
+    .page_content{
+     border-radius: 25px;
+    background-color: white;
+     margin: auto;
+    /* margin-top: 50px; */
+  width: 50%;
+   padding: 10px;
+    border: 3px solid green;
+
+    }
+    h1{
+    font-size: 50px;
+    color: #C8863D;
+
+
+    }
+    h3{
+    font-size: 20px;
+    }
+        .bg-img {
+  /* The image used */
+  background-image: url("https://b.kisscc0.com/20180815/btq/kisscc0-treasure-map-road-map-world-map-trip-5b745a95b94184.1978381015343520217588.png");
+
+  /* Control the height of the image */
+
+  min-height: 200px;
+
+
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 300px;
+
+  position: relative;
+}
+      body{
+       background-color:#dce4eb;
+      }
+          .GFG {
+            background-color: white;
+            border: 2px solid black;
+            color: green;
+            padding: 5px 10px;
+            text-align: center;
+            display: inline-block;
+            font-size: 20px;
+            margin: 10px 30px;
+            cursor: pointer;
+        }
+  .GFG:hover{
+  background-color: #4CAF50;
+  color: white;
+          }
+.desc{
+font-size: 30px;}
+ body{background-color: #dce4eb}
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #7393B3;
+}
+
+.hint {
+  float: left;
+}
+
+.hint a {
+  display: block;
+  color: white;
+  text-align: center;
+   font-size: 15px;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.hint a:hover {
+  background-color: #111;
+}
+
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #7393B3;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.menu li:not(:last-child) {
+	margin-right: 10px;
+}
+
+.menu li:last-child {
+	margin-left: auto;
+}
+
+.meu li {
+  float: left;
+}
+
+.menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  background-color: #111;
+}

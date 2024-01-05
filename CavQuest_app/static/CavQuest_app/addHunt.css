@@ -1,0 +1,356 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600);
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-moz-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
+ ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #7393B3;
+  font-size: 20px
+}
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+body {
+	font-family:"sans-serif";
+	font-weight:300;
+	font-size: 12px;
+	line-height:30px;
+	color:#777;
+	 background-color:  #dce4eb;
+}
+
+.container {
+	max-width:600px;
+	width:100%;
+	margin:0 auto;
+	position:relative;
+}
+
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#contact {
+	background:#F9F9F9;
+	padding:25px;
+	margin:50px 0;
+}
+
+#contact h3 {
+	color: #F96;
+	display: block;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+#contact h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+
+fieldset {
+	border: medium none !important;
+	margin: 0 0 10px;
+	min-width: 100%;
+	padding: 0;
+	width: 100%;
+}
+
+#contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea {
+	width:100%;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+}
+
+#contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+
+#contact textarea {
+	height:100px;
+	max-width:100%;
+  resize:none;
+}
+
+#contact button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:#0CF;
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	font-size:15px;
+}
+
+#contact button[type="submit"]:hover {
+	background:#09C;
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+
+#contact button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#contact input:focus, #contact textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+::-webkit-input-placeholder {
+ color:#888;
+}
+:-moz-placeholder {
+ color:#888;
+}
+::-moz-placeholder {
+ color:#888;
+}
+:-ms-input-placeholder {
+ color:#888;
+}
+
+
+
+.full-page-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+h1{
+color: #DA8718;
+}
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #7393B3;
+font-size: 20px
+}
+.uniform-button {
+	width: 100px; /* or any specific width */
+	height: 35px; /* or any specific height */
+}
+li {
+float: left;
+}
+
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-family: sans-serif;
+font-weight: 400;
+}
+
+li a:hover {
+background-color: #111;
+}
+.content-container {
+	 border-radius: 25px;
+	margin-top: -90px; /* Adjust value as needed */
+	background-color: white;
+	margin: 300px;
+	padding: 50px;
+	 box-shadow: 10px 10px 5px grey;
+}
+.bg-img {
+/* The image used */
+background-image: url("https://b.kisscc0.com/20180815/btq/kisscc0-treasure-map-road-map-world-map-trip-5b745a95b94184.1978381015343520217588.png");
+
+/* Control the height of the image */
+
+min-height: 200px;
+
+
+
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: 900px;
+background-width: 700px;
+position: relative;
+}
+	 body{
+		background-color:  #dce4eb;
+	  }
+	  h1 {
+	  text-align: center;
+	  font-size: 30px;
+
+	  }
+	 container {
+		display: flex;
+		justify-content: right;
+		align-items: right;
+	 }
+	 form {
+		display: flex;
+		flex-direction: column; /* Stack items vertically */
+		align-items: center; /* Center items horizontally */
+		justify-content: center; /* Center items vertically */
+		font-size: 15px;
+	 }
+	 .button-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+	.add_desc{
+	font-size:15px;
+	text-align: center;
+	color: grey;
+	}
+	.GFG {
+		background-color: white;
+		border: 2px solid black;
+		color: green;	
+		text-align: center;
+		display: inline-block;
+		font-size: 15px;
+		margin: 10px 30px;
+		cursor: pointer;
+	}
+.GFG:hover{
+background-color: #4CAF50;
+color: white;
+	  }
+	  .menu {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: #7393B3;
+		font-size: 20px;
+		display: flex;
+		justify-content: space-between;
+		list-style-type: none;
+		padding: 0;
+	  }
+	  
+	  .menu li:not(:last-child) {
+		  margin-right: 10px;
+	  }
+	  
+	  .menu li:last-child {
+		  margin-left: auto;
+	  }
+	  
+	  .menu li {
+		float: left;
+	  }
+	  
+	  .menu li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	  }
+	  
+	  .menu li a:hover {
+		background-color: #111;
+	  }
+	
+	.submission-form label {
+		/* Add your label styles here */
+		display: inline-block;
+		width: 80px; /* Adjust the width as needed */
+		margin-bottom:3px;
+		text-align: center;
+	}
+
+	.submission-form input {
+		/* Add your input styles here */
+		width: 170.25; /* Adjust the width considering label width and margin */
+		padding: 8px;
+		margin-bottom: 3px;
+		box-sizing: border-box; /* Ensures padding is included in the total width */
+		display: inline-block;
+		height:50px;
+	}
+
+	
+	.submission-button{
+		margin-top: 10px;
+		display: block;
+		width: 150px;
+		height: 40px;
+		line-height: 40px;
+		font-size: 18px;
+		font-family: sans-serif;
+		text-decoration: none;
+		color: #333;
+		border: 2px solid #333;
+		letter-spacing: 2px;
+		text-align: center;
+		position: relative;
+		transition: all .35s;
+		text-align: center;
+	  }
+	  
+	  .submission-button span{
+		position: relative;
+		z-index: 2;
+	  }
+	  
+	  .submission-button:after{
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 100%;
+		background: green;
+		transition: all .35s;
+	  }
+	  
+	  .submission-button:hover{
+		color: #fff;
+	  }
+	  
+	  .submission-button:hover:after{
+		width: 100%;
+	  }
+
+	  .submision-form textarea {
+		height:40px;
+		/* Add your input styles here */
+		width: 100%;
+		padding: 8px;
+		margin-bottom: 16px;
+		box-sizing: border-box; /* Ensures padding is included in the total width */
+	  }

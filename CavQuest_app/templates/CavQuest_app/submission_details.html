@@ -1,0 +1,88 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% csrf_token %}
+<link rel="stylesheet" href="{% static 'CavQuest_app/task_details.css' %}">
+<link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+<html>
+<head>
+    <title>{{ submission.task_text}}</title>
+</head>
+<body>
+<ul class="menu">
+    <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}"> Profile</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}"> Tutorial</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:about' %}"> About</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}"> Logout</a></li>
+</ul>
+
+<div class="page_content">
+    <h2> Scavenger Hunt: {{ submission.task_text }}</h2>
+    <h3>Description: {{ submission.description }}</h3>
+
+    <h3>Hints:</h3>
+    <ol>
+        {% if submission.hint1 %}
+        <li>{{ submission.hint1 }}</li>
+        {% endif %}
+        {% if submission.hint2 %}
+        <li>{{ submission.hint2 }}</li>
+        {% endif %}
+        {% if submission.hint3 %}
+        <li>{{ submission.hint3 }}</li>
+        {% endif %}
+    </ol>
+
+    <style>
+     .action-button {
+        border: 0.5px solid black;
+        padding: 3px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .approve-button {
+        margin: 0px 20;
+        background-color: #3DA641;
+        color: white;
+    }
+
+    .deny-button {
+        background-color: #EE403A;
+        color: white;
+    }
+
+    .action-button:hover {
+        filter: brightness(90%); /* Darken the button on hover */
+    }
+
+    </style>
+
+    <h3>Difficulty: {{submission.difficulties}}</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="image">Upload an image of the location: </label>
+        <input type="file" name="image" id="image" required>
+
+        <label for="facts">Location Information: </label>
+        <input type="text" placeholder="Enter more information about the location..." name="facts" id ='facts' required>
+        <br>
+        <label for="latitude">Latitude:</label>
+        <input type="text" pattern="-?[0-9]+(\.[0-9]+)?" placeholder="Enter latitude..." step="0.000001" title="Please enter a valid numeric value for latitude." name="latitude" id="latitude" required>
+        <br>
+        <label for="longitude">Longitude:</label>
+        <input type="text" pattern="-?[0-9]+(\.[0-9]+)?" placeholder="Enter longitude..." step="0.000001" title="Please enter a valid numeric value for latitude." name="longitude" id="longitude" required>
+        <div style="margin:10px;">
+            <button type="submit" name="action" value="deny" class="action-button deny-button" onclick="return confirm('Are you sure you want to deny this submission? \nOnce denied, the submission cannot be recovered or undone.')">Deny</button>
+            <button type="submit" name="approve" value="approve" class="action-button approve-button">Approve</button>
+        </div>
+    </form>
+
+    <div>
+        <a class="back_bttn" href="{% url 'CavQuest_app:display_submissions' %}">Back</a>
+    </div>
+</div>
+</body>
+</html>

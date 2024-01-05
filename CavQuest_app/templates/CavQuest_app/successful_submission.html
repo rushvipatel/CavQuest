@@ -1,0 +1,33 @@
+<head> 
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link rel="stylesheet" href="{% static 'CavQuest_app/successful_submission.css' %}">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+  <html lang="en">  
+  <meta charset="utf-8">
+  <title>Success!</title>
+</head>
+<body>
+  <ul class="menu">
+    <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}"> Profile</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}"> Tutorial</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:about' %}"> About</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}">Logout</a></li>
+  </ul>
+<div class="page_content">
+    <p class="desc">Your submission was successful. If approved, it will be added to the site! Thank you!</p>
+    <a href="{% url 'CavQuest_app:add_tasks' %}"><button class="GFG">
+            Submit Another?
+        </button>
+    <a href="{% url 'CavQuest_app:task_list' %}">
+        <button class="GFG">
+            Go Back to Scavenger Hunt List
+        </button>
+    </a>
+</div>
+
+</body>
+</html>

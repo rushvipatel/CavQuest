@@ -1,0 +1,59 @@
+<head>
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <meta charset="utf-8">
+  <title>Hunt List</title>
+  <link rel="stylesheet" href="{% static 'CavQuest_app/task_list.css' %}">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+</head>
+<html>
+
+<body>
+<ul class="menu">
+    <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}"> Profile</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}"> Tutorial</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:about' %}"> About</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}"> Logout</a></li>
+</ul>
+<div class="page_content">
+    <h1>Scavenger Hunt List</h1>
+    {% for task in pending_tasks %}
+
+    <ul>
+        <li>
+
+            <a class="task_style" href="{% url 'CavQuest_app:task_details' task_id=task.id %}"
+               style=" font-size: 15px; ">{{ task.task_text }}</a>
+            {% if request.user.username == "cs3240.super" or request.user.email == "nicole.savage00@gmail.com" or request.user.email == "xqj8fz@virginia.edu" or request.user.email == "umm9ef@virginia.edu" or request.user.email == "ufx2ju@virginia.edu" %}
+            <a href="{% url 'CavQuest_app:delete_task' task_id=task.id %}"
+               onclick="return confirm('Are you sure you want to delete this task?');">Delete</a>
+            {% endif %}
+
+        </li>
+
+
+    </ul>
+
+    {% endfor %}
+    {% if not request.user.username == "cs3240.super" and request.user.email == "nicole.savage00@gmail.com" and request.user.email == "xqj8fz@virginia.edu" and request.user.email == "umm9ef@virginia.edu" %}
+    <h2>Completed Tasks</h2>
+    <ul>
+        {% for task in completed_tasks %}
+        <li>{{ task.task_text }} - Completed!</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <a href="{% url 'CavQuest_app:homepage_loggedin' %}">
+        <button class="GFG">
+            Back
+        </button>
+    </a>
+</div>
+
+</body>
+
+</html>

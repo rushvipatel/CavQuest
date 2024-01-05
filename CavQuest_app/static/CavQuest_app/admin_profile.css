@@ -1,0 +1,44 @@
+body{ 
+  background-color:  #dce4eb; 
+}
+
+.test {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #7393B3;
+}
+
+.testing {
+  float: left;
+}
+
+li .activ {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li .activ:hover {
+  background-color: #111;
+}
+
+.GFG {
+  background-color: white;
+  border: 2px solid black;
+  color: green;
+  padding: 5px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  margin: 10px 30px;
+  cursor: pointer;
+}
+
+.GFG:hover{
+  background-color: #4CAF50;
+  color: white;
+}

@@ -1,0 +1,164 @@
+
+          body{ background-color:  #dce4eb; }
+          body, html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+ color: #DA8718;
+}
+          .page_content{
+
+           margin-top: -90px; /* Adjust value as needed */
+        background-color: white;
+
+       margin: 30px;
+        padding: 50px;
+         box-shadow: 10px 10px 5px grey;
+         width: 50%;
+
+
+
+
+
+  }
+
+.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #7393B3;
+  opacity: 1;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #111;
+}
+
+
+     .button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+ .GFG {
+            background-color: white;
+            border: 2px solid black;
+            color: green;
+            padding: 5px 10px;
+            text-align: center;
+            display: inline-block;
+            font-size: 15px;
+            margin: 10px 20px;
+            cursor: pointer;
+        }
+  .GFG:hover{
+  background-color: #4CAF50;
+  color: white;
+          }
+         .task_style{
+         color: #24713E;
+         background-color: white;
+          }
+          * {
+  box-sizing: border-box;
+}
+
+
+   .bg-img {
+
+  background-image: url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dHJlZXN8ZW58MHx8MHx8fDA%3D");
+
+  min-height: 380px;
+
+
+
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+.w3-bar,h1,button {
+	font-family: "Montserrat", sans-serif
+
+}
+.fa-anchor,.fa-coffee {
+	font-size:200px
+}
+
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #7393B3;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li:not(:last-child) {
+	margin-right: 10px;
+}
+
+.menu li:last-child {
+	margin-left: auto;
+}
+
+.menu li {
+  float: left;
+}
+
+.menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  background-color: #111;
+}
+
+.task_style{
+  color: #24713E;
+  background-color: white;
+   }
+   * {
+box-sizing: border-box;
+}

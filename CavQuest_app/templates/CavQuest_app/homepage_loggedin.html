@@ -1,0 +1,131 @@
+<head> 
+  {% load socialaccount %}
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <html lang="en">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/homepage_loggedin.css' %}">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+</head>
+    <meta charset="utf-8">
+    <title>Home</title>
+
+</head>
+    <body>
+    <ul class="menu">
+        <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+        <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}"> Profile</a></li>
+        <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}"> Tutorial</a></li>
+       <li><a class="active" href="{% url 'CavQuest_app:about' %}"> About</a></li>
+        <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}"> Logout</a></li>
+    </ul>
+
+    {% if request.user.username == "cs3240.super" or request.user.email == "nicole.savage00@gmail.com" or request.user.email == "xqj8fz@virginia.edu" or request.user.email == "umm9ef@virginia.edu" or request.user.email == "zw4re@virginia.edu" %}
+    <h3 style="margin:20px">Hello, Admin {{ user.get_full_name }}!</h3>
+    <p style="margin:20px"class="user_profile_desc"> Here you can manage existing scavenger hunts or approve new ones!</p>
+
+<div class="row justify-content-center">
+    <!-- Hunt List Card -->
+    <div class="col-md-4">
+        <div class="card interactive-card" onclick="window.location='{% url 'CavQuest_app:task_list' %}'">
+            <div class="card-body">
+                <h5 class="card-title">Manage Existing Hunts!</h5>
+                <p class="card-text">Click To See All Approved Scavenger Hunts</p>
+                <div class="card-footer">
+                    <small class="text-muted"> Not sure what to put here!</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Task Card -->
+            <div class="col-md-4" >
+                <div class="card interactive-card" onclick="window.location='{% url 'CavQuest_app:add_tasks' %}'">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Your Own Task!</h5>
+                        <p class="card-text">Submit a scavenger hunt for others to try!</p>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card interactive-card" onclick="window.location='{% url 'CavQuest_app:display_submissions' %}'">
+            <div class="card-body">
+                <h5 class="card-title">User Submissions!</h5>
+                <p class="card-text">Click To Approve or Deny User Submissions!</p>
+                <div class="card-footer">
+                    <small class="text-muted">Not sure what to put here!</small>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+
+    <!-- User Submissions Card -->
+
+
+
+    {% else %}
+    <div>
+        <p style="margin:20px">Hello, {{ user.username }}!</p>
+        <!--<p>Email: {{ user.email }}</p>-->
+        <p style="margin:20px" class="user_profile_desc">Here you can submit a request to add a new location and object to our scavenger
+            hunt list, and wait for it to be approved. You can also view the current scavenger hunt quests!</p>
+
+        <div class="row justify-content-center">
+            <!-- Task List Card -->
+            <div class="col-md-4">
+                <div class="card interactive-card" onclick="window.location='{% url 'CavQuest_app:task_list' %}'">
+                    <div class="card-body">
+                        <h5 class="card-title">View Tasks and Start Hunting!</h5>
+                        <p class="card-text">Click To See Available Tasks Shared By Our Users.</p>
+                        <div class="card-footer">
+                            <small class="text-muted">See What Tasks You've Completed Too!</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card interactive-card" onclick="window.location='{% url 'CavQuest_app:add_tasks' %}'">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Your Own Task!</h5>
+                        <p class="card-text">Submit a geocache task to our app for other users to see.</p>
+                        <div class="card-footer">
+                            <small class="text-muted">Participate in our community!</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="container my-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                </div>
+            </div>
+        </div>
+
+        <!--<button class="button button1" >Green</button>
+        <button class="button button2">Blue</button> -->
+    </div>
+    {% endif %}
+
+
+
+
+
+
+    </body>
+    </html>

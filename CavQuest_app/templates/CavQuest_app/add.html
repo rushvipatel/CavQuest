@@ -1,0 +1,35 @@
+<head>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'CavQuest_app/addHunt.css' %}">
+    <link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+</head>
+<body>
+<ul class="menu">
+  <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+  <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}"> Profile</a></li>
+  <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}"> Tutorial</a></li>
+  <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}"> Logout</a></li>
+</ul>
+<div class="bg-img" >
+<div class="full-page-container">
+    <div class="content-container">
+    <h1>Add Name, Hints, and Description</h1>
+    <p class="add_desc">Submit a scavenger hunt name, three hints,  a little description of the thing that a searcher would need to find, and level of difficulty </p>
+    <div class="container">
+        <form method="post" class="submission-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_submission_form.as_p }}
+            <div class="button-container">
+                <button type="submit" class="submission-button"><span> SUBMIT! </span></button>
+                <!--<a href="{% url 'CavQuest_app:homepage_loggedin' %}" class="GFG uniform-button" style="text-decoration: none;">Back</a> -->
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

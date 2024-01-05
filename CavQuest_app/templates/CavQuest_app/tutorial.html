@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <title>Tutorial</title>
+  <link rel="stylesheet" href="{% static 'CavQuest_app/tutorial.css' %}">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+</head>
+
+<ul class = "menu">
+  <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+       <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}"> Profile</a></li>
+       <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}"> Tutorial</a></li>
+   <li><a class="active" href="{% url 'CavQuest_app:about' %}"> About</a></li>
+       <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}"> Logout</a></li>
+</ul>
+<!--
+ Site used for template for this page:
+ https://www.w3schools.com/w3css/tryw3css_templates_blog.html -->
+<body style="background-color: #dce4eb;text-align: center;">
+
+
+<div class="w3-content" style="max-width:1400px;">
+
+    <header class="w3-container w3-center w3-padding-32">
+        <h1><b>TUTORIAL</b></h1>
+    </header>
+
+    <div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="https://news.virginia.edu/sites/default/files/article_image/institutional_announcement_ss_header.jpg" alt="Nature" style="width:100%;height: 200px; object-fit:cover;">
+    <div class="w3-container">
+      <h3><b>HOW TO PLAY</b></h3>
+
+    </div>
+
+    <div class="w3-container">
+      <p>To play, go to Home and click "View Hunts and Start Hunting."
+          From there, select any hunt to view more information about it. Once
+          you find one you like, click "Start Hunt!" You will need location permissions
+          enabled before being able to start your scavenger hunt. Clicking "How far am I?"
+          will tell you how close you are to the destination. If you are close enough,
+          it will congratulate you on finishing the hunt! You'll be able to see a picture
+          of the location and more fun facts about it. If you get stuck, click "Next Hint"
+          for a little push in the right direction! Happy Hunting!</p>
+
+    </div>
+  </div>
+  <hr>
+
+  <div  class="w3-card-4 w3-margin w3-white">
+  <img src="https://news.virginia.edu/sites/default/files/empty_grounds_ss_02_header_standard_feature.jpg" alt="Norway" style="width:100%; height:200px; object-fit:cover" >
+    <div class="w3-container">
+      <h3><b>SUBMITTING A NEW HUNT DESTINATION</b></h3>
+
+    </div>
+
+    <div class="w3-container">
+      <p>To submit a new hunt destination, go to Home and click "Add a New Hunt."
+          From there, fill in the place or object's secret scavenger hunt name that you want other hunters to find, along
+          with a description and three hints incase the hunter gets stuck. After you click submit, your submission
+          will be reviewed by admin. If its approved, you will soon see your contribution added to the list
+          of CavQuest hunts!</p>
+    </div>
+  </div>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!--         Introduction menu -->
+        <div class="w3-col l4">
+            <!-- About Card -->
+            <div class="w3-card w3-margin w3-margin-top"
+                 style=" display:flex; align-items:center;justify-content:center;">
+                <img src="https://www.hoosfootball.com/images/graphic_cavman.jpg"
+                     style="width:100%;height:377px">
+
+            </div>
+            <hr>
+
+            <!-- Posts -->
+            <div class="w3-card w3-margin">
+
+    <ul class="w3-ul w3-white">
+      <li class="w3-padding-16">
+        <img src="https://i.pinimg.com/originals/04/e1/8a/04e18a2ed97712ef99b450551d5c38b6.jpg" alt="Image" class="w3-left w3-margin-right" style="width:100%">
+
+<!--                    </li>-->
+
+
+<!--                </ul>-->
+            </div>
+            <hr>
+
+            <!-- Labels / tags -->
+
+            <!-- END Introduction Menu -->
+        </div>
+
+        <!-- END GRID -->
+    </div>
+    <br>
+
+    <!-- END w3-content -->
+</div>
+
+
+
+
+</body>
+</html>

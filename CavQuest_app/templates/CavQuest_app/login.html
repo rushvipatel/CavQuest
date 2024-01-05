@@ -1,0 +1,15 @@
+<head>
+  {% load socialaccount %}
+  {% load static %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+	<link rel="stylesheet" href="{% static 'CavQuest_app/login.css' %}">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+	<title>Login</title>
+</head>
+
+<body>
+    <h2>Login</h2>
+    <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+</body>
+</html>

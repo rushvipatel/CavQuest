@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load socialaccount %}
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/about.css' %}">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <title>About Us!</title>
+</head>
+<body>
+<ul class = "menu">
+  <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+  <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}"> Profile</a></li>
+  <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}"> Tutorial</a></li>
+  <li><a class="active" href="{% url 'CavQuest_app:about' %}"> About</a></li>
+  <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}"> Logout</a></li>
+</ul>
+  <div class="wrapper">
+    <div class="page-header page-header-small">
+      <div class="page-header-image" data-parallax="true" style="background-image: url('https://conferences.virginia.edu/sites/conference.virginia.edu/files/Parking.jpg');">
+      </div>
+      <div class="content-center">
+       <div class="container">
+  <img src="https://conferences.virginia.edu/sites/conference.virginia.edu/files/Parking.jpg" alt="about_us"
+       style=" object-fit: cover; width:100%; height:200px; opacity:0.65;">
+
+  <div class="about_us" style="font-size:75px; color:#101757;">About Us!</div>
+</div>
+      </div>
+    </div>
+    <div class="section section-about-us">
+      <div class="container">
+        <div class="row">
+          <br>
+        </div>
+        <div class="separator separator-primary"></div>
+        <div class="section-story-overview">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="image-container image-left" style="background-image: url('https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/login.jpg')">
+                <!-- First image on the left side -->
+                <p class="blockquote blockquote-primary">This project was created by UVA CS 3240 students Nicole Savage,
+            Maria Rahmouni, Zhennguang Wang, Rushvi Patel, and Sunny Chanda.
+                  <br>
+                  <br>
+
+                </p>
+              </div>
+              <!-- Second image on the left side of the article -->
+               <img src="https://lightandshadowsphotography.files.wordpress.com/2014/08/uva-rice-hall.jpg" alt="about_us" style=" object-fit: cover; width:100%; height:300px; ">
+            </div>
+            <div class="col-md-5">
+              <!-- First image on the right side, above the article -->
+              <div class="image-container image-right" style="background-image: url('https://lightandshadowsphotography.files.wordpress.com/2014/08/uva-rice-hall.jpg')"></div>
+              <h3>Inspiration </h3>
+             <p>Before beginning this project, we knew we wanted to create an app where users would need
+                 to find hidden locations. Working within the constraints of our project guidelines, we decided
+                 to incorporate Google Maps to build a scavenger hunt app that would take the user's current position
+                 and tell them how far away they were from the scavenger hunt destination. We based this scavenger hunt
+                 around buildings, statues, and popular places around UVA's Grounds, as we thought doing so would be a
+                 fun and educational experience for people to get to know Grounds just a little bit more. </p>
+                <h3>Learning Along the Way</h3>
+                <p> While working on this project, we've learned more about the importance of being adaptable when
+                    working on a team. We've also learned to not be scared of making mistakes, and instead embrace
+                    a learning opportunity that may begin in failure. A lot of work required for this project was
+                    uncharted terrority for our team, so we put a lot of effort into finding resources that would help
+                    us figure out the right ways to implement our desired features. We discovered a lot not only
+                    about software development, coding practices, and team building, but also about cool locations
+                    on Grounds! We hope you can learn something new, too!</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

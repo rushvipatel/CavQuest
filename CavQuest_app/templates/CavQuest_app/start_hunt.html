@@ -1,0 +1,211 @@
+<head>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>{{ task.task_text }}</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}"></script>
+    <link rel="stylesheet" href="{% static 'CavQuest_app/start_hunt.css' %}">
+    <link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+    <html lang="en">
+    <meta charset="utf-8">
+</html>
+
+
+<body>
+  <ul class="menu">
+    <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}">Profile</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}">Tutorial</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}">Logout</a></li>
+  </ul>
+<div class=" page_content">
+    <div class="start_close">
+ <button class="start_bttn" id="startHuntButton" onclick="startHunt()">Start Hunt</button>
+          </div>
+ <button onclick="calculateDistance()">How close am I?</button>
+
+ <button onclick="amIHere()">Am I there</button>
+<!--    change the calculateDistance and make new function to see if within distance to redirect to congrats page-->
+
+    <p id="distance"></p>
+    <p id="demo"></p>
+    <p id="task"></p>
+    <script type="text/javascript">
+    var hints = JSON.parse('{{ hints_json | safe }}');
+
+    </script>
+    <script>
+const x = document.getElementById("demo");
+let map;
+let marker;
+let watchID;
+var hiddenLocation = {lat: {{ task.place.latitude }}, lng: {{ task.place.longitude }}}//{ lat: task.place.latitude, lng: task.place.longitude };
+var lat;
+var lng;
+startHunt()
+
+function getLocation() {
+
+    if (navigator.geolocation) {
+        // Use watchPosition to continuously get updated location
+        watchID = navigator.geolocation.watchPosition(showPosition, showError, {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        });
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    console.log("Position updated!")
+    lat = position.coords.latitude;
+    lng = position.coords.longitude;
+
+    x.innerHTML = "Latitude: " + lat + "<br>Longitude: " + lng;
+
+    const myLatLng = new google.maps.LatLng(lat, lng);
+
+    if(!map) {
+        map = new google.maps.Map(document.getElementById("googleMap"), {
+            center: myLatLng,
+            zoom: 15
+        });
+
+        marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map
+        });
+    } else {
+        marker.setPosition(myLatLng);
+        map.setCenter(myLatLng);
+    }
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable.";
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out.";
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred.";
+            break;
+    }
+}
+function calculateDistance() {
+    console.log(hiddenLocation);
+    if (typeof lat === 'undefined' || typeof lng === 'undefined') {
+        document.getElementById("distance").textContent = `Please Press Start Hunt before checking proximity`;
+        return;
+    }
+    const userLocation = { lat: lat, lng: lng };
+    console.log("User Location: ", userLocation);
+    const distance = haversine_distance(userLocation, hiddenLocation);
+    const distanceElement = document.getElementById("distance");
+    if(distance <= 200){
+        distanceElement.textContent = `You are less than 200 feet away from the location!`;
+    }
+    else{
+        distanceElement.textContent = `You are ${distance.toFixed(2)} feet from the destination.`;
+    }
+
+    // Set a timer to clear the distance after 20 seconds
+    setTimeout(function() {
+        distanceElement.textContent = '';
+    }, 20000); // 20000 milliseconds = 20 seconds
+}
+
+function amIHere() {
+    console.log("here");
+    console.log(hiddenLocation);
+    if (typeof lat === 'undefined' || typeof lng === 'undefined') {
+        document.getElementById("distance").textContent = `Please Press Start Hunt before checking proximity`;
+        return;
+    }
+    const userLocation = { lat: lat, lng: lng };
+    console.log("User Location: ", userLocation);
+    const distance = haversine_distance(userLocation, hiddenLocation);
+
+    if (distance <= 30) {
+        window.location.href = "{% url 'CavQuest_app:congratulations' task_id=task.id %}";
+    } else {
+        document.getElementById("distance").textContent = "Hm, not quite there yet, keep trying, you could be close!";
+    }
+    setTimeout(function() {
+        distanceElement.textContent = '';
+    }, 20000); // 20000 milliseconds = 20 seconds
+}
+
+//function calculateCloseDistance this will be used for the am i there button, and then use this line in the function to redirect to congrats:
+// //window.location.href = "{% url 'CavQuest_app:congratulations' task_id=task.id %}";
+
+function haversine_distance(userLocation, hiddenLocation) {
+    var earthRadius = 20902200; // Radius of the Earth in feet
+    var lat1 = (Math.PI / 180) * userLocation.lat;
+    var lat2 = (Math.PI / 180) * hiddenLocation.lat;
+    var dLat = lat2 - lat1; // Radian difference (latitudes)
+    var dLng = (Math.PI / 180) * (hiddenLocation.lng - userLocation.lng); // Radian difference (longitudes)
+
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var distance = earthRadius * c;
+    console.log("Distance: " + distance);
+    return distance;
+}
+function startHunt() {
+    getLocation();
+
+    document.getElementById("startHuntButton").style.display = 'none'; // Hides the button
+}
+var hintCounter = 0;
+var hints = JSON.parse('{{ hints_json | safe }}');
+
+
+function updateHintButtons() {
+    document.getElementById("prevHintButton").style.display = hintCounter > 0 ? 'inline-block' : 'none';
+    document.getElementById("nextHintButton").style.display = hintCounter < hints.length ? 'inline-block' : 'none';
+}
+
+
+function getHint(next) {
+    if (next && hintCounter < hints.length) {
+        var currentHint = hints[hintCounter];
+        var hintMessage = currentHint.fields.hint_text;
+        document.getElementById('hintDisplay').textContent = hintMessage;
+        hintCounter++;
+    } else if (!next && hintCounter > 0) {
+        hintCounter--;
+        var currentHint = hints[hintCounter];
+        var hintMessage = currentHint.fields.hint_text;
+        document.getElementById('hintDisplay').textContent = hintMessage;
+    }
+    updateHintButtons();
+}
+
+window.onload = function() {
+    updateHintButtons(); // Initial update when the page loads
+}
+
+
+
+    </script>
+    <button id="prevHintButton" onclick="getHint(false)">Previous Hint</button>
+    <button id="nextHintButton" onclick="getHint(true)">Next Hint</button>
+    <p id="hintDisplay">Hint will be shown here</p>
+    <a href="{% url 'CavQuest_app:task_list' %}">
+        <button class="GFG">Back</button>
+    </a>
+</div>
+<div id="googleMap" style="width:100%;height:600px;"></div>
+
+</body>
+</html>

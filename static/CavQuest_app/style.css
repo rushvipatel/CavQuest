@@ -1,0 +1,49 @@
+.custom-login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    max-width: 75px;
+    border-radius: 50px;
+    background-color: #007BFF;
+    color: #FFF;
+    text-decoration: none;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+}
+.App_name{
+ font-family: 'Allura';
+ font-size:50px;
+}
+
+a.custom-login-button:hover {
+    background-color: #86c5da;
+    color: #FFFFFF;
+}
+.index_image_and_info {
+
+
+}
+.scavenger_image{
+float:left
+width:50%
+
+}
+.description{
+height: 200px;
+  width: 50%;
+  float: left;
+font-size: 25px;
+
+
+}
+.login_button{
+ background-color: green;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.user_profile_desc {
+font-size: 50px;
+}

@@ -1,0 +1,43 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% csrf_token %}
+<link rel="stylesheet" href="{% static 'CavQuest_app/task_list.css' %}">
+<link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+<html>
+<head>
+    <title>User Submission List</title>
+</head>
+<body>
+<ul class="menu">
+    <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}"> Profile</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}"> Tutorial</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:about' %}"> About</a></li>
+    <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}"> Logout</a></li>
+  </ul>
+
+<div class="page_content">
+    <h2 style="color: #DA8718; font-size: 30px;">User Submissions</h2>
+    <ul>
+        {% for submission in submissions %}
+        {% if not submission.approved %}
+        <li class><a href="{% url 'CavQuest_app:submission_details' submission_id=submission.id %}">
+            {{ submission.task_text }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <a href="{% url 'CavQuest_app:user_profile' %}">
+        <button class="GFG">
+            Back
+        </button>
+    </a>
+</div>
+
+</div >
+
+</body>
+</html>
+
+

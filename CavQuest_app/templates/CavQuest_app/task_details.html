@@ -1,0 +1,151 @@
+<head>
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/task_details.css' %}">
+  <link rel="stylesheet" href="{% static 'CavQuest_app/navbar.css' %}">
+  <html lang="en">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap" async defer></script>
+  <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfkyJ2fBFTDBxR9UIfAjzk0rHARHLnBLk">
+      </script>
+  <script>
+    let map;
+    let marker; // Global variable for the marker
+    let previousDistance = null;
+
+  function initMap() {
+
+    // Create a map centered at an initial location
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 40.7128, lng: -74.0060 },
+      zoom: 10,
+    });
+
+        // Create a marker and set it to the initial location
+    marker = new google.maps.Marker({
+      position: { lat: 40.7128, lng: -74.0060 },
+      map: map,
+    });
+
+        // Request the user's current location using Geolocation
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(function (position) {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        // Center the map on the updated location
+        map.setCenter(userLocation);
+
+        // Update the marker's position
+        marker.setPosition(userLocation);
+      });
+    }
+  }
+
+      function getCSRFToken(){
+        let cookieValue = null;
+        let name = 'csrftoken';
+        if (document.cookie && document.cookie !== '') {
+        let cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          let cookie = jQuery.trim(cookies[i]);
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+      }
+
+      function checkDistance(taskId, userLatitude, userLongitude) {
+      $.ajax({
+        url: `/CavQuest_app/check_distance/${taskId}/`,
+        type: 'POST',
+        headers: {
+          "X-CSRFToken": getCSRFToken()
+        },
+        data: {
+          'latitude': userLatitude,
+          'longitude': userLongitude,
+        },
+        success: function(response) {
+          if (response.status === 'warmer' || response.status === 'colder') {
+            
+            alert(response.message);
+          }
+          previousDistance = response.distance;
+        },
+        error: function(xhr, status, error) {
+          console.error("Error checking distance: " + error);
+        }
+      });
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(function (position) {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+
+        // Update map and marker positions...
+        checkDistance({{ task.id }}, userLocation.lat, userLocation.lng);
+      }, function(error) {
+        console.error("Geolocation error: " + error.message);
+      }, {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      });
+    }
+    window.onload = initMap;
+  </script>
+<head>
+    <title>{{ task.task_text }}</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}"></script>
+</head>
+<body>
+ <ul class="menu">
+   <li><a class="active" href="{% url 'homepage_loggedin' %}">Home</a></li>
+      <li><a class="active" href="{% url 'CavQuest_app:user_profile' %}"> Profile</a></li>
+      <li><a class="active" href="{% url 'CavQuest_app:tutorial' %}"> Tutorial</a></li>
+      <li><a class="active" href="{% url 'CavQuest_app:about' %}"> About</a></li>
+      <li><a class="active" href="{% url 'CavQuest_app:logout_view' %}">Logout</a></li>
+</ul>
+ <div class="bg-img" >
+ <div class="page_content">
+    <h1> {{ task.task_text }}</h1>
+    <h3>Hunt Description: {{ task.place.description}}</h3>
+
+            <h3 style="text-transform: capitalize;">Difficulty: {{ difficulty.difficulty }}</h3>
+            {% if request.user.username == "cs3240.super" or request.user.email == "nicole.savage00@gmail.com" or request.user.email == "xqj8fz@virginia.edu" or request.user.email == "umm9ef@virginia.edu" %}
+            <h3>Hints:</h3>
+            <ul>
+                {% for hint in hints %}
+                <li>{{ hint.hint_text }}</li>
+                {% endfor %}
+            </ul>
+            <h3>Latitude: {{ task.place.latitude }}</h3>
+            <h3>Longitude: {{ task.place.longitude }}</h3>
+            {% endif %}
+            <p style="font-size: 12px;">Click the button to start the hunt!</p>
+        <a href="{% url 'CavQuest_app:start_task' task.id %}" class="GFG">Start Task</a>
+
+            <div>
+                <a class="back_bttn" href="{% url 'CavQuest_app:task_list' %}">Back</a>
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+
+    </body>
+    </html>

@@ -1,0 +1,73 @@
+.custom-login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    max-width: 75px;
+    border-radius: 50px;
+    background-color: #007BFF;
+    color: #FFF;
+    text-decoration: none;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+  }
+  .App_name{
+    font-family: 'Allura';
+    font-size:50px;
+  }
+  
+  a.custom-login-button:hover {
+    background-color: #86c5da;
+    color: #FFFFFF;
+  }
+  
+  .scavenger_image{
+    float:left;
+    width:50%
+  }
+  .description{
+    height: 200px;
+    width: 50%;
+    float: left;
+    font-size: 25px;
+  
+  }
+  .login_button{
+    background-color: green;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .user_profile_desc {
+    font-size: 50px;
+  }
+
+  .submision-form{
+    color:green;
+
+  }
+  .submission-form label {
+    /* Add your label styles here */
+    display: block;
+    margin-bottom: 8px;
+    
+}
+
+.submision-form input {
+    height:40px;
+    /* Add your input styles here */
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box; /* Ensures padding is included in the total width */
+}
+
+.submision-form textarea {
+  height:40px;
+  /* Add your input styles here */
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box; /* Ensures padding is included in the total width */
+}
